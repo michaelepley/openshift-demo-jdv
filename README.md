@@ -1,6 +1,6 @@
 # A Simple demo for JBoss Data Virtualization (JDV) on Openshift Container Management Platform (OCP)
 
-#About
+## About
 Some simple scripts to setup a basic demo of JBoss Data Virtualization (JDV) with the Red Hat Openshift Container Platform (OCP).
 
 Important notes: 
@@ -9,7 +9,7 @@ Important notes:
 - In general these scripts attempt to do simple validation checks and attempt to prevent unnecessary processes. It _should_ be generally safe to rerun any of these at any time without causing any harm.
 - When in doubt, run the **clean.sh** script
 
-#Prerequisites
+## Prerequisites
 
 You'll need a couple of things for this demo to work. Most of these are standard kit for Red Hat PS MW SAs.
 - an existing installation of Openshift Container Platform
@@ -21,7 +21,7 @@ You'll need a couple of things for this demo to work. Most of these are standard
 - eclipse with teiid, openshift, git, maven, and a handful of other plugins; [JBoss Developer Studio 10.0+](http://developers.redhat.com/products/devstudio/download/) (user account at access.redhat.com required) recommended as it already has the necessary plugins
 - a web browser; Firefox 48+ recommended
 
-#Workflow
+## Workflow
 
 The recommend workflow is
 - clone this repository
@@ -30,11 +30,11 @@ The recommend workflow is
 - on your local workstation in a bash terminal, run **run-demo.sh**
   * this script will launch several other **setup-*.sh** scripts
   * these scripts will output basic information to the terminal describing the steps
-  * these scripts will pause and wait for the user to hit _enter_ at various points so the presenter can show items in the web console, discuss the process steps, or other activities 
+  * these scripts will pause and wait for the user to hit _enter_ at various points so the presenter can show items in the web console, discuss the process steps, or other tinyactivities 
 - run **clean.sh** to remove any script and openshift artifacts; the eclipse project/artifacts are left in place in case you want to keep them
 
 
-#References
+## References
 
 This demo is partly based on
 - https://developerblog.redhat.com/2016/12/06/red-hat-jboss-data-virtualization-on-openshift-part-1-getting-started/
