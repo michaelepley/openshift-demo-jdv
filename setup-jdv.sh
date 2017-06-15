@@ -25,7 +25,7 @@ echo "	--> Verify the contents of the keystore"
 
 
 echo 'Creating a new project called jdv-demo'
-oc new-project ${OPENSHIFT_PRIMARY_PROJECT}
+oc project ${OPENSHIFT_PRIMARY_PROJECT} || oc new-project ${OPENSHIFT_PRIMARY_PROJECT} ${OPENSHIFT_PROJECT_DESCRIPTION:+"--description"} ${OPENSHIFT_PROJECT_DESCRIPTION} ${OPENSHIFT_PROJECT_DISPLAY_NAME:+"--display-name"} ${OPENSHIFT_PROJECT_DISPLAY_NAME}
 
 echo 'Creating the image stream for the OpenShift datavirt image'
 # oc create -f https://raw.githubusercontent.com/cvanball/jdv-ose-demo/master/extensions/is.json
@@ -41,7 +41,7 @@ oc get serviceaccounts datavirt-service-account 2>&1 > /dev/null || echo '{"kind
 
 
 echo 'Creating secrets for the JDV server'
-oc get secret datavirt-app-secret 2>&1 > /dev/null || oc secrets new datavirt-app-secret ${JDV_SERVER_KEYSTORE_DEFAULT} ${JDV_SERVER_KEYSTORE_JGROUPS}
+oc get secret datavirt-app-secret 2>&1 > /dev/null || oc secrets new datavirt-app-secret ${JDV_SERVER_KEYSTORE_DEFAULT} ${JDV_SERVER_KEYSTORE_JGROUPS} || { echo "FAILED: could create secret" && exit 1; }
 
 oc get sa/datavirt-service-account -o json | grep datavirt-app-secret 2>&1 > /dev/null || oc secrets link datavirt-service-account datavirt-app-secret || { echo "FAILED: could not link secret to service account" && exit 1; }
 
